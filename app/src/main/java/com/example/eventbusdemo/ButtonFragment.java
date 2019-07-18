@@ -9,23 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 
 public class ButtonFragment extends Fragment {
 
-    Button btnCount;
-    EventCount eventCount;
+    private Button btnCount;
+    int count = 0;
 
     public ButtonFragment() {
 
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -37,24 +29,11 @@ public class ButtonFragment extends Fragment {
         btnCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onCountEventClick(eventCount);
-                EventBus.getDefault().post(new EventCount(eventCount.COUNT));
+                EventBus.getDefault().post(new EventCount(++count));
 
             }
         });
 
         return view;
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public Integer onCountEventClick(EventCount eventCount){
-        eventCount.COUNT = ++eventCount.COUNT;
-        return eventCount.COUNT;
-    }
-
-    @Override
-    public void onStop() {
-        EventBus.getDefault().unregister(this);
-        super.onStop();
     }
 }

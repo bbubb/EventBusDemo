@@ -19,7 +19,6 @@ import org.greenrobot.eventbus.ThreadMode;
  * A simple {@link Fragment} subclass.
  */
 public class CounterFragment extends Fragment {
-    EventCount eventCount;
     TextView tvDisplayCount;
     private static final String TAG = "CounterFragment";
     
@@ -37,11 +36,9 @@ public class CounterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_counter, container, false);
 
         tvDisplayCount = view.findViewById(R.id.tv_display_count);
-        displayCount(eventCount);
         return view;
     }
 
@@ -52,8 +49,8 @@ public class CounterFragment extends Fragment {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void displayCount(EventCount eventCount) {
+    public void onEventCount(EventCount eventCount) {
         Log.d(TAG, "displayCount: ");
-        tvDisplayCount.setText(Integer.toString(eventCount.COUNT));
+        tvDisplayCount.setText(Integer.toString(eventCount.count));
     }
 }

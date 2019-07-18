@@ -1,9 +1,9 @@
 package com.example.eventbusdemo;
 
 public class EventCount {
-    public int COUNT;
+    public final int count;
 
-    public EventCount(int COUNT){
-        this.COUNT = COUNT;
+    public EventCount(int count){
+        this.count = count;
     }
 }

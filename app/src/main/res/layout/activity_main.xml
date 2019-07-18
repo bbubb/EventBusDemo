@@ -6,24 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<fragment
-    android:id="@+id/counter_fragment"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:name="com.example.eventbusdemo.CounterFragment"
-    app:layout_constraintBottom_toTopOf="@+id/button_fragment"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    <fragment
+        android:id="@+id/counter_fragment"
+        android:name="com.example.eventbusdemo.CounterFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
         android:id="@+id/button_fragment"
+        android:name="com.example.eventbusdemo.ButtonFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:name="com.example.eventbusdemo.ButtonFragment"
-        app:layout_constraintTop_toBottomOf="@+id/counter_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/counter_fragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
